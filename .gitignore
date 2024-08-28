@@ -1,0 +1,22 @@
+# Build and distribution directories
+build/
+dist/
+
+# Python cache and package info
+__pycache__/
+*.pyc
+*.pyo
+*.egg-info/
+
+# JSON files
+*.json
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*~
+
+# Operating system files
+.DS_Store
+Thumbs.db
