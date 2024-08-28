@@ -66,12 +66,20 @@ def print_report(report):
     print(f"IP Address: {report['network']['ip_address']}")
     
     print("\nGPU Information:")
-    if 'error' in report['gpu']:
-        print(f"Error: {report['gpu']['error']}")
+    if isinstance(report['gpu'], list):
+        if 'error' in report['gpu'][0]:
+            print(f"Error: {report['gpu'][0]['error']}")
+        else:
+            for gpu in report['gpu']:
+                print(f"\nGPU {gpu['id']}:")
+                print(f"  Name: {gpu['name']}")
+                print(f"  Memory Total: {gpu['memory_total']}")
+                print(f"  Memory Used: {gpu['memory_used']}")
+                print(f"  Memory Free: {gpu['memory_free']}")
+                print(f"  GPU Utilization: {gpu['gpu_utilization']}")
+                print(f"  Temperature: {gpu['temperature']}")
     else:
-        print(f"Name: {report['gpu']['name']}")
-        print(f"Memory Total: {report['gpu']['memory_total']}")
-        print(f"Memory Used: {report['gpu']['memory_used']}")
+        print("GPU information not available")
 
 if __name__ == "__main__":
     report = generate_report()
