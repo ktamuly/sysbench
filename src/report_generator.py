@@ -82,7 +82,8 @@ def print_report(report):
                 print(f"  Power Usage: {gpu['power_usage']}")
                 print(f"  Fan Speed: {gpu['fan_speed']}")
                 print(f"  Driver Version: {gpu['driver_version']}")
-                print(f"  CUDA Version: {gpu['cuda_version']}")
+                if gpu['cuda_version'] != "Not available":
+                    print(f"  CUDA Version: {gpu['cuda_version']}")
     else:
         print("GPU information not available")
 

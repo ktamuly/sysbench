@@ -64,6 +64,24 @@ class TestGPUInfo(unittest.TestCase):
 
     @patch('pynvml.nvmlInit')
     @patch('pynvml.nvmlDeviceGetCount')
+    @patch('pynvml.nvmlDeviceGetHandleByIndex')
+    @patch('pynvml.nvmlSystemGetDriverVersion')
+    @patch('pynvml.nvmlSystemGetCudaDriverVersion')
+    @patch('pynvml.nvmlShutdown')
+    def test_get_gpu_info_no_cuda(self, mock_shutdown, mock_cuda_version, mock_driver_version, 
+                                  mock_handle, mock_count, mock_init):
+        mock_count.return_value = 1
+        mock_driver_version.return_value = b'450.36.06'
+        mock_cuda_version.side_effect = AttributeError()
+
+        info_list = get_gpu_info()
+
+        self.assertEqual(len(info_list), 1)
+        self.assertEqual(info_list[0]['driver_version'], '450.36.06')
+        self.assertEqual(info_list[0]['cuda_version'], 'Not available')
+
+    @patch('pynvml.nvmlInit')
+    @patch('pynvml.nvmlDeviceGetCount')
     @patch('pynvml.nvmlShutdown')
     def test_get_gpu_info_no_gpu(self, mock_shutdown, mock_count, mock_init):
         mock_count.return_value = 0

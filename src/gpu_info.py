@@ -48,7 +48,11 @@ def get_gpu_info():
                 }
                 
                 gpu_info['driver_version'] = pynvml.nvmlSystemGetDriverVersion().decode('utf-8')
-                gpu_info['cuda_version'] = f"{pynvml.nvmlSystemGetCudaDriverVersion() / 1000:.2f}"
+                try:
+                    cuda_version = pynvml.nvmlSystemGetCudaDriverVersion()
+                    gpu_info['cuda_version'] = f"{cuda_version / 1000:.2f}"
+                except AttributeError:
+                    gpu_info['cuda_version'] = "Not available"
                 
                 gpu_info_list.append(gpu_info)
         else:
