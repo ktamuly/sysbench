@@ -73,11 +73,16 @@ def print_report(report):
             for gpu in report['gpu']:
                 print(f"\nGPU {gpu['id']}:")
                 print(f"  Name: {gpu['name']}")
+                print(f"  UUID: {gpu['uuid']}")
                 print(f"  Memory Total: {gpu['memory_total']}")
                 print(f"  Memory Used: {gpu['memory_used']}")
                 print(f"  Memory Free: {gpu['memory_free']}")
                 print(f"  GPU Utilization: {gpu['gpu_utilization']}")
                 print(f"  Temperature: {gpu['temperature']}")
+                print(f"  Power Usage: {gpu['power_usage']}")
+                print(f"  Fan Speed: {gpu['fan_speed']}")
+                print(f"  Driver Version: {gpu['driver_version']}")
+                print(f"  CUDA Version: {gpu['cuda_version']}")
     else:
         print("GPU information not available")
 

@@ -1,4 +1,4 @@
 psutil==6.0.0
 py-cpuinfo==9.0.0
-GPUtil==1.4.0
+nvidia-ml-py3==11.495.46
 setuptools>=65.5.1
