@@ -19,7 +19,7 @@ class TestGPUInfo(unittest.TestCase):
     @patch('pynvml.nvmlDeviceGetPerformanceState')
     @patch('pynvml.nvmlDeviceGetClockInfo')
     @patch('pynvml.nvmlSystemGetDriverVersion')
-    @patch('pynvml.nvmlSystemGetCudaDriverVersion_v2')
+    @patch('pynvml.nvmlSystemGetCudaDriverVersion')
     @patch('pynvml.nvmlShutdown')
     def test_get_gpu_info(self, mock_shutdown, mock_cuda_version, mock_driver_version, 
                           mock_clock_info, mock_perf_state, mock_fan_speed, mock_power_limit, 
@@ -60,7 +60,7 @@ class TestGPUInfo(unittest.TestCase):
         self.assertEqual(info_list[0]['performance_state'], 0)
         self.assertEqual(info_list[0]['clock_speeds']['graphics'], '1500 MHz')
         self.assertEqual(info_list[0]['driver_version'], '450.36.06')
-        self.assertEqual(info_list[0]['cuda_version'], 11000)
+        self.assertEqual(info_list[0]['cuda_version'], '11.00')
 
     @patch('pynvml.nvmlInit')
     @patch('pynvml.nvmlDeviceGetCount')
