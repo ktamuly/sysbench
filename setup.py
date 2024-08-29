@@ -8,7 +8,7 @@ setup(
     install_requires=[
         "psutil",
         "py-cpuinfo",
-        "GPUtil",
+        "nvidia-ml-py3",
     ],
     entry_points={
         "console_scripts": [
