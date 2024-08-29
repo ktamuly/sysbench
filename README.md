@@ -22,14 +22,14 @@ System Benchmark is a comprehensive tool designed to evaluate and report on vari
 
 1. Clone this repository:
    ```
-   git clone https://github.com/yourusername/system-benchmark.git
+   git clone https://github.com/ktamuly/sysbench
    cd system-benchmark
    ```
 
-2. Install the required packages:
-   ```
-   pip install -r requirements.txt
-   ```
+2. Install the dependencies:
+  ```
+  pip install -e .
+  ```
 
 ## Usage
 
